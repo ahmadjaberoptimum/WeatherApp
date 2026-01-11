@@ -1,0 +1,127 @@
+.hourly-frocast{
+    margin-top: 1.5625rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    background: hsl(243, 27%, 20%);
+    border-radius: .625rem;
+    font-family: 'Dm sans', sans-serif;
+    max-width: 21.0625rem;
+}
+.today-dropdown{
+        position: relative;
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    border-radius: .5rem;
+    background: hsl(243, 27%, 20%);
+    color:white;
+}
+
+.daily-temp-img{
+    width: 50px;
+    height: 50px;
+}
+
+.hourly-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: 400;
+    gap: 1.75rem;
+}
+
+.temp-hour{
+    display: flex;
+    align-items: center;
+    padding: .625rem;
+    width: 85%;
+    background: hsl(243, 23%, 24%);
+        border: .0625rem solid hsl(243, 23%, 30%);
+  height: 2.875rem;
+
+    border-radius: .3125rem;
+}
+.daily-hour-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .9375rem;
+    overflow-y: scroll;
+    max-height: 25rem;
+    padding: .25rem 0;
+    gap:.625rem;
+    max-height: 28.75rem;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(243, 23%, 34%) hsl(243, 27%, 18%);
+}
+.temp-hourly{
+    margin-left: auto;
+    margin-right: .625rem;
+}
+.today-btn{
+    padding: .3125rem;
+    background: hsl(243, 23%, 30%);
+    border: none;
+    color: white;
+    border-radius: .3125rem;
+    width: 5.9375rem;
+    height: 1.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .625rem;
+        cursor: pointer;
+
+}
+.today-btn:focus{
+    outline: .125rem solid white;
+    outline-offset: .125rem;
+}
+
+.today-menu {
+    position: absolute;
+    top: 3.125rem;
+    right: 0;
+    background: white;
+    border-radius: .75rem;
+    padding: .625rem;
+    width: 9.375rem;
+    display: none;
+    box-shadow: 0 .625rem 1.875rem rgba(0,0,0,.15);
+    background: hsl(243, 27%, 20%);
+}
+
+.today-menu.open {
+    display: block;
+}
+
+.today-option {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background: none;
+    border: none;
+    padding: .5rem;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+.today-option:hover {
+    background: hsl(243, 23%, 30%);
+    transition: background 300ms ease;
+    border-radius: .5rem;
+}
+@media (min-width:64rem) {
+    .hourly-frocast{
+        width: 100%
+    }
+
+    
+}

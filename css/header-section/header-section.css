@@ -1,0 +1,123 @@
+.main-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 31.25rem;
+    margin: 0 auto;
+    padding: .9375rem;
+
+    font-family: 'DM Sans', sans-serif;
+}
+
+.logo{
+    width: clamp(8.125rem, 30vw, 9.375rem);
+}
+
+.main-header{
+    font-family: 'Bricolage Grotesque', sans-serif;
+    text-align: center;
+    font-size: clamp(2rem, 8vw, 2.8125rem);
+    line-height: 1.1;
+}
+.unit-dropdown:focus-within{
+  outline: .125rem solid white;
+  outline-offset:.125rem ;
+}
+
+.unit-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    border-radius: .5rem;
+    background: hsl(243, 27%, 20%);
+    color:white;
+}
+
+.unit-btn {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.unit-btn:focus-visible{
+  outline: none
+}
+
+
+.unit-menu {
+    position: absolute;
+    top: 3.125rem;
+    right: 0;
+    border-radius: .75rem;
+    padding: .625rem;
+    width: 9.375rem;
+    display: none;
+    box-shadow: 0 .625rem 1.875rem rgba(0,0,0,.15);
+    background: hsl(243, 27%, 20%);
+}
+
+.unit-menu.open {
+    display: block;
+    z-index: 1;
+}
+
+.section-title{
+    opacity: 0.5;
+    font-size: .8125rem;
+    font-weight: 500;
+}
+
+.unit-option {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background: none;
+    border: none;
+    padding: .5rem;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.Imperial-switch{
+    font-size: .875rem;
+    white-space: nowrap;
+    text-align: start;
+}
+
+.unit-option:hover {
+    background: hsl(243, 23%, 30%);
+    transition: background 300ms ease;
+    border-radius: .5rem;
+}
+.unit-option:focus{
+    outline: .125rem white solid;
+    outline-offset: .0625rem;
+    outline-style: ridge;
+}
+
+@media (min-width:64rem) {
+    .main-nav{
+        max-width: 90rem;
+    }
+
+    .break-line{
+        display: none;
+    }
+
+    .unit-menu{
+        width: 10.9375rem;
+    }
+
+    .section-title{
+        padding-left: .75rem;
+    }
+}

@@ -1,0 +1,70 @@
+@import url("./global-variable.css");
+@import url("./header-section/header-section.css");
+@import url("./Search-section/search-section.css");
+@import url("./today-section/TodayStyle.css");
+@import url("./today-details-section/Today-detailsStyles.css");
+@import url("./DailyForecast-section/daily-forcastStyles.css");
+@import url("./hourlyCast-section/HourlyCastStyle.css");
+@import url("./SkeletonStyle/SkeletonStyle.css");
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background-color: var(--main-bg);
+  color: var(--font-color);
+  margin: 0;
+  padding: 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+header, main{
+  width: min(26.25rem, 92vw);
+  margin: 0 auto;
+}
+
+
+.main-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1.375rem;
+  margin-top: 1.5625rem;
+}
+
+.container{
+  width: 100%;
+
+}
+.error-msg{
+  text-align: center;
+}
+.is-hidden{
+  display: none !important;
+}
+
+@media (min-width:64rem){
+  header, main{
+    width: min(68.75rem, 92vw);
+  }
+
+  .main-container{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 22.5rem;
+    gap: 1.375rem;
+    align-items: start;
+  }
+
+  .first-wrapper{
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.875rem;
+    align-items: stretch;   
+    width: 100%;            
+  }
+  .seconed-wrapper{
+    margin-left: 1.875rem;
+  }
+  .container{ margin: 0; width: 100%; }
+  .daily-forcast{ margin: 0; width: 100%; }
+}

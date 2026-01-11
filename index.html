@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Building Weather App With Live Location Temperature">
+        <link rel="stylesheet" href="css/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Bricolage Grotesque' rel='stylesheet'>
+        <script type="module" src="/ts/main.ts" defer></script>
+        <title>Weather App</title>
+    </head>
+    <body>
+        <header>
+        <!-- Main Navigation -->
+            <nav class="main-nav">
+                <img class="logo" src="images/header/logo.svg" alt="weather-logo">
+                <!--Unit Dropdown List-->
+                    <div class="unit-dropdown">
+                        <button class="unit-btn" id="unitToggle">
+                            <img src="images/header/icon-units.svg" alt="settings icon">
+                            <span id="currentUnit">Units</span>
+                            <img src="images/header/icon-dropdown.svg" alt="dropdown icon">
+                        </button>
+                    <div class="unit-menu" id="unitMenu">
+                        <div class="unit-section">
+                            <button class="unit-option Imperial-switch" type="button">
+                                <span>Switch to Imperial</span>
+                            </button>
+                        </div>
+                        <div class="unit-section">
+                            <span class="section-title">Temperature</span>
+                            <button class="unit-option" data-unit="c">
+                                <span>Celsius (°C)</span>
+                            </button>
+                            <button class="unit-option" data-unit="f">
+                                <span>Fahrenheit (°F)</span>
+                            </button>
+                        </div>
+                            <div class="unit-section">
+                                <span class="section-title">Wind Speed</span>
+                                <button class="unit-option" data-unit="c">
+                                <span>km/h</span>
+                            </button>
+                            <button class="unit-option" data-unit="f">
+                                <span>mph</span>
+                            </button>
+                        </div>
+                            <div class="unit-section">
+                            <span class="section-title">Precipitation</span>
+                            <button class="unit-option" data-unit="c">
+                                <span>Millimeters (mm)</span>
+                            </button>
+                            <button class="unit-option" data-unit="f">
+                                <span>Inches (in)</span>
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+            </nav>
+            <!--Main Header for Website-->
+            <h1 class="main-header">How's the <br class="break-line">sky looking<br class="break-line"> today?</h1>
+        </header>
+        <main>
+            <!--Search Section-->
+            <form class="search-wrapper" id="searchForm">
+                <div class="input-container">
+                    <img src="images/main/search-bar/icon-search.svg" alt="search icon">
+                    <input class="search-bar" id="search" aria-label="Search for a place" placeholder="Search for a Place..." autocomplete="off"/>
+                </div>
+                <button class="search-btn" type="submit">Search</button>
+            </form>
+            <h2 class="error-msg" id="errorMsg" aria-live="polite"></h2>
+            <!--Main Container-->
+<section id="skeleton" class="skeleton is-hidden">
+  <div class="layout">
+    <!-- Left column -->
+    <div class="left">
+      <div class="sk sk-hero"></div>
+
+      <div class="sk-stats">
+        <div class="sk sk-stat"></div>
+        <div class="sk sk-stat"></div>
+        <div class="sk sk-stat"></div>
+        <div class="sk sk-stat"></div>
+      </div>
+
+      <div class="sk-title"></div>
+
+      <div class="sk-daily">
+        <div class="sk sk-day"></div>
+        <div class="sk sk-day"></div>
+        <div class="sk sk-day"></div>
+        <div class="sk sk-day"></div>
+        <div class="sk sk-day"></div>
+        <div class="sk sk-day"></div>
+        <div class="sk sk-day"></div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <aside class="right">
+      <div class="sk sk-hourly"></div>
+    </aside>
+  </div>
+</section>
+            <div class="main-container" id="main-container">
+                <!--First Wrapper -->
+                <div class="first-wrapper">
+                    <!--Contaienr For Today Section Temprature and Deatils-->
+                    <section class="container">
+                        <!--Today Currnet Temprature -->
+                        <div class="today-weather-imgbox">
+                            <div class="today-text-wrapper">
+                            <h2 class="today-header" id="city-location">Berlin, Germany</h2>
+                            <span class="today-date" id="date">Tuesday, Aug 5, 2025</span>
+                            </div>
+                            <div class="temp-icon-wrapper">
+                                <img class="today-weather" id="current-icon" src="images/main/today-section/icon-sunny.webp" alt="sunny icon">
+                                <span class="today-tempreature" id="current-temp">68<sup><small class="temp-icon">o</small></sup></span>
+                            </div>
+                        </div>
+                        <!--Today Details -->
+                        <div class="today-details">
+                            <div class="grid-item today-feels-like">
+                                <span class="item-header">Feels Like</span>
+                                <span class="today-txt" id="feels-like">64<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="grid-item today-Humidity">
+                                <span class="item-header">Humidity</span>
+                                <span class="today-txt" id="humidity">46%</span>
+                            </div>
+                            <div class="grid-item today-wind">
+                                <span class="item-header">Wind</span>
+                                <span class="today-txt" id="wind-speed">9 mph</span>
+                            </div>
+                            <div class="grid-item today-Precipitation">
+                                <span class="item-header">Precipitation</span>
+                                <span class="today-txt" id="prec-value">0 in</span>
+                            </div>
+                        </div>
+                    </section>
+                    <!--Daily Forcast Section-->
+                    <h3 class="Daily-header">Daily forecast</h3>
+                    <div class="daily-forcast">
+                        <div class="daily-wrapper" id="daily-container">
+                        </div>
+                    </div>
+                </div>
+                <!--Seconed Wrapper-->
+                <div class="seconed-wrapper">
+                    <!--Hourly Forcast Section-->
+                    <div class="hourly-frocast">
+                        <div class="hourly-header">
+                            <h3 class="hourly-title">Hourly forecast</h3>
+                                <div class="today-dropdown">
+                                    <button class="today-btn" id="todayToggle">
+                                        <span id="currentDay">Today</span>
+                                        <img src="images/header/icon-dropdown.svg" alt="dropdown icon">
+                                    </button>
+                                    <div class="today-menu" id="todayMenu">
+                                        <!-- <div class="today-section">
+                                            <button class="today-option Imperial-switch">
+                                            <span>Monday</span>
+                                            </button>
+                                        </div>
+                                        <div class="today-section">
+                                            <button class="today-option Imperial-switch">
+                                            <span>Tuesday</span>
+                                            </button>
+                                        </div>
+                                        <div class="today-section">
+                                            <button class="today-option Imperial-switch">
+                                            <span>Wednesday</span>
+                                            </button>
+                                        </div>
+                                        <div class="today-section">
+                                            <button class="today-option Imperial-switch">
+                                            <span>Thursday</span>
+                                            </button>
+                                        </div>
+                                        <div class="today-section">
+                                            <button class="today-option Imperial-switch">
+                                            <span>Friday</span>
+                                            </button>
+                                        </div>
+                                        <div class="today-section">
+                                            <button class="today-option Imperial-switch">
+                                            <span>Saturday</span>
+                                            </button>
+                                        </div>
+                                        <div class="today-section">
+                                        <button class="today-option Imperial-switch">
+                                        <span>Sunday</span>
+                                        </button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                        </div>
+                        <!--Daily Hours Wrapper -->
+                        <div class="daily-hour-wrapper" id="hourly-container">
+                            <!-- <div class="temp-hour">
+                                <img class="daily-temp-img" id ="hourly-img"src="images/main/day-forecast-section/icon-overcast.webp" alt="overcast icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img  class="daily-temp-img"src="images/main/day-forecast-section/icon-partly-cloudy.webp" alt="partly cloudy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img class="daily-temp-img" src="images/main/day-forecast-section/icon-snow.webp" alt="snowy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img class="daily-temp-img" src="images/main/day-forecast-section/icon-snow.webp" alt="snowy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img class="daily-temp-img" src="images/main/day-forecast-section/icon-snow.webp" alt="snowy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img class="daily-temp-img" src="images/main/day-forecast-section/icon-snow.webp" alt="snowy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img class="daily-temp-img" src="images/main/day-forecast-section/icon-snow.webp" alt="snowy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img class="daily-temp-img" src="images/main/day-forecast-section/icon-snow.webp" alt="snowy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img class="daily-temp-img" src="images/main/day-forecast-section/icon-snow.webp" alt="snowy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div>
+                            <div class="temp-hour">
+                                <img class="daily-temp-img" src="images/main/day-forecast-section/icon-snow.webp" alt="snowy icon">
+                                <span class="hour">3 PM</span>
+                                <span class="temp-hourly">20<sup><small>o</small></sup></span>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>
